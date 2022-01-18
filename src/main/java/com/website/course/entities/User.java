@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity(name = "users") //informa que classe é uma entidate do banco de dados
+@Entity() //informa que classe é uma entidate do banco de dados
 public class User implements Serializable {
 
   /*
@@ -87,5 +87,16 @@ public class User implements Serializable {
   @Override
   public int hashCode() {
     return Objects.hash(id);
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", email='" + email + '\'' +
+            ", phone='" + phone + '\'' +
+            ", password='" + password + '\'' +
+            '}';
   }
 }
