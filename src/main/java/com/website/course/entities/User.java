@@ -1,8 +1,13 @@
 package com.website.course.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity(name = "users") //informa que classe é uma entidate do banco de dados
 public class User implements Serializable {
 
   /*
@@ -11,7 +16,10 @@ public class User implements Serializable {
   * trafegar na rede, por exemplo
   * */
 
+  @Id //informa que essa propriedade da classe será a chave primária no banco de dados
+  @GeneratedValue(strategy = GenerationType.IDENTITY) //informa que o campo é auto-incrementável
   private Long id;
+
   private String name;
   private String email;
   private String phone;
