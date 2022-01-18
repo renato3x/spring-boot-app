@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity() //informa que classe é uma entidate do banco de dados
+@Entity //informa que classe é uma entidate do banco de dados
 public class User implements Serializable {
 
   /*
