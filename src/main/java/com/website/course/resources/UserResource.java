@@ -4,10 +4,7 @@ import com.website.course.entities.User;
 import com.website.course.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,12 +38,12 @@ public class UserResource {
   }
 
   @GetMapping("/{id}") //maneira receber parâmetros pela rota
+  //@RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public ResponseEntity<User> findById(@PathVariable Long id) {
     /*
     * parâmetros de métodos com a anotação @PathVariable
     * informam que elas fazem referência a algum parâmetro da rota
     * */
-
     User user = userService.findById(id);
 
     return ResponseEntity.ok().body(user);
