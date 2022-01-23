@@ -2,6 +2,7 @@ package com.website.course.config;
 
 import com.website.course.entities.Order;
 import com.website.course.entities.User;
+import com.website.course.entities.enums.OrderStatus;
 import com.website.course.repositories.OrderRepository;
 import com.website.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +50,9 @@ public class TestConfig implements CommandLineRunner {
 
     userRepository.saveAll(Arrays.asList(user1, user2));
 
-    Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), user1);
-    Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), user2);
-    Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), user1);
+    Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, user1);
+    Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, user2);
+    Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, user1);
 
     orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 
