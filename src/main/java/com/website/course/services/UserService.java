@@ -2,6 +2,7 @@ package com.website.course.services;
 
 import com.website.course.entities.User;
 import com.website.course.repositories.UserRepository;
+import com.website.course.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class UserService {
     * o metodo findById retorna um Optional<T>, em que T e o tipo da entidade que voce
     * espera o retorno
     * */
-    return opt.get(); // o metod get() retorna em a entidade em si;
+    return opt.orElseThrow(() -> new ResourceNotFoundException(id)); // o metod get() retorna em a entidade em si;
   }
 
   public User insert(User user) {
