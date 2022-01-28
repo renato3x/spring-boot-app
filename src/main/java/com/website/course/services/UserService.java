@@ -37,4 +37,8 @@ public class UserService {
     * */
     return opt.get(); // o metod get() retorna em a entidade em si;
   }
+
+  public User insert(User user) {
+    return userRepository.save(user);
+  }
 }
