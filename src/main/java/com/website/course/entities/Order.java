@@ -7,7 +7,9 @@ import com.website.course.entities.enums.OrderStatus;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity()
 @Table(name = "orders") // informa o nome da tabela no banco de dados
@@ -29,6 +31,9 @@ public class Order implements Serializable {
   private User client;
 
   private Integer orderStatus;
+
+  @OneToMany(mappedBy = "id.order")
+  private Set<OrderItem> items = new HashSet<>();
 
   public Order() {}
 
@@ -71,6 +76,10 @@ public class Order implements Serializable {
 
   public void setClient(User client) {
     this.client = client;
+  }
+
+  public Set<OrderItem> getItems() {
+    return items;
   }
 
   @Override

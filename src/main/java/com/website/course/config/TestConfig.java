@@ -1,14 +1,8 @@
 package com.website.course.config;
 
-import com.website.course.entities.Category;
-import com.website.course.entities.Order;
-import com.website.course.entities.Product;
-import com.website.course.entities.User;
+import com.website.course.entities.*;
 import com.website.course.entities.enums.OrderStatus;
-import com.website.course.repositories.CategoryRepository;
-import com.website.course.repositories.OrderRepository;
-import com.website.course.repositories.ProductRepository;
-import com.website.course.repositories.UserRepository;
+import com.website.course.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -53,6 +47,9 @@ public class TestConfig implements CommandLineRunner {
   @Autowired
   private ProductRepository productRepository;
 
+  @Autowired
+  private OrderItemRepository orderItemRepository;
+
   @Override
   public void run(String... args) throws Exception {
     Category cat1 = new Category(null, "Electronics");
@@ -90,6 +87,13 @@ public class TestConfig implements CommandLineRunner {
 
     userRepository.saveAll(Arrays.asList(user1, user2));
     orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+    OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+    OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+    OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+    OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+
+    orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
     /*
      * o método saveAll() salva várias entidades de um banco de dados de uma vez
